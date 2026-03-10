@@ -124,8 +124,8 @@ Access the live platform at [https://hive-hub-zeta.vercel.app/](https://hive-hub
 ## 📬 Connect With Me
 
 - **GitHub:** [https://github.com/Rajikshank](https://github.com/Rajikshank)
-- **Email:** [krajikshan637@gmail.com](mailto:krajikshan637@gmail.com)
-- **LinkedIn:** [Krishnakumar Rajikshan](https://www.linkedin.com/in/krishnakumar-rajikshan-4853861a5/)
+- **Email:** [raguventha@gmail.com](mailto:krajikshan637@gmail.com)
+- **LinkedIn:** [Guventha Ravi](https://www.linkedin.com/in/krishnakumar-rajikshan-4853861a5/)
 
 ## 📄 License
 
