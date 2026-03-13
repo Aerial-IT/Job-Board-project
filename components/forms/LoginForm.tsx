@@ -34,12 +34,12 @@ export async function LoginForm() {
   }
 
   return (
-    <Card className="backdrop-blur-sm bg-white/90 shadow-xl border-0">
+    <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-800/90 shadow-xl border-0">
       <CardHeader className="space-y-4 text-center pb-2">
-        <CardTitle className="text-xl font-semibold text-gray-800">
+        <CardTitle className="text-xl font-semibold text-gray-800 dark:text-gray-100">
           Welcome Back
         </CardTitle>
-        <CardDescription className="text-gray-600">
+        <CardDescription className="text-gray-600 dark:text-gray-400">
           Sign in to continue your journey
         </CardDescription>
       </CardHeader>
@@ -56,7 +56,7 @@ export async function LoginForm() {
               variant="outline"
               width="w-full"
               icon={<Github className="size-5" />}
-              className="h-11 transition-all duration-300 hover:bg-gray-100 hover:scale-102 hover:shadow-md"
+              className="h-11 transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-102 hover:shadow-md"
             />
           </form>
 
@@ -71,22 +71,22 @@ export async function LoginForm() {
               variant="outline"
               width="w-full"
               icon={<Google className="size-5" />}
-              className="h-11 transition-all duration-300 hover:bg-gray-100 hover:scale-102 hover:shadow-md"
+              className="h-11 transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-102 hover:shadow-md"
             />
           </form>
         </div>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200"></div>
+            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">or</span>
+            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500">or</span>
           </div>
         </div>
 
         <div className="text-center">
-          <p className="text-xs text-gray-600 max-w-sm mx-auto leading-relaxed">
+          <p className="text-xs text-gray-600 dark:text-gray-400 max-w-sm mx-auto leading-relaxed">
             By continuing, you agree to our{" "}
             <a href="#" className="text-blue-600 hover:underline">Terms of Service</a>
             {" "}and{" "}

@@ -70,7 +70,8 @@ async function getJobs(userId: string, userType: string, jobSeekerid?: string) {
 
 export default async function MyJobPage() {
   const session = await requireUser();
-  const data = await getJobs(session.id as string, session.userType);
+  const userType = session.userType || session.role;
+  const data = await getJobs(session.id as string, userType);
 
   console.log("found users", data);
 
@@ -87,7 +88,7 @@ export default async function MyJobPage() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {session.userType === "JOB_SEEKER" ? "Applied Jobs" : "My Jobs"}
+              {userType === "JOB_SEEKER" ? "Applied Jobs" : "My Jobs"}
             </CardTitle>
 
             <CardDescription>
@@ -103,11 +104,11 @@ export default async function MyJobPage() {
                   <TableHead>Job Title</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>
-                    {session.userType === "JOB_SEEKER"
+                    {userType === "JOB_SEEKER"
                       ? "Applied On"
                       : "Created at"}
                   </TableHead>
-                 {session.userType==="Company" && <TableHead className=" text-center ">Candidates</TableHead>}
+                 {userType==="Company" && <TableHead className=" text-center ">Candidates</TableHead>}
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -126,26 +127,26 @@ export default async function MyJobPage() {
                     <TableCell>{listing.Company?.name}</TableCell>
                     <TableCell>{listing.jobTitle}</TableCell>
                     <TableCell>
-                      {session.userType === "JOB_SEEKER" && listing.AppliedJobPost.filter((item)=>item.jobId ===listing.id)[0]. status.charAt(0).toUpperCase() +
+                      {userType === "JOB_SEEKER" && listing.AppliedJobPost.filter((item)=>item.jobId ===listing.id)[0]. status.charAt(0).toUpperCase() +
                        listing.AppliedJobPost.filter((item)=>item.jobId ===listing.id)[0]. status.slice(1).toLowerCase()}
                     </TableCell>
                     <TableCell>
-                      {session.userType === "JOB_SEEKER" ?  listing.AppliedJobPost.filter(
+                      {userType === "JOB_SEEKER" ?  listing.AppliedJobPost.filter(
                         (item) => item.jobId === listing.id
                       )[0].createdAt.toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",
-                         
+                          
                       }) : listing. createdAt.toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",
-                         
+                          
                       })} 
                     </TableCell >
-                    {session.userType === "Company"  && <TableCell className="text-center">
-                      
+                    {userType === "Company"  && <TableCell className="text-center">
+                       
                       {listing.AppliedJobPost.length} 
 
                     </TableCell> }

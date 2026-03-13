@@ -73,7 +73,7 @@ export default async function MyJobPage() {
         <h1 className="text-3xl font-bold">
           {session.userType === "JOB_SEEKER" ? "Applied Jobs" : "My Jobs"}
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-gray-600 dark:text-gray-400">
           Manage your job listings and applications efficiently.
         </p>
       </header>
@@ -101,10 +101,10 @@ export default async function MyJobPage() {
           return (
             <Card
               key={job.id}
-              className="flex flex-col h-full bg-white shadow-md hover:shadow-xl transition-shadow"
+              className="flex flex-col h-full bg-white dark:bg-gray-900 shadow-md hover:shadow-xl transition-shadow border-gray-200 dark:border-gray-700"
             >
               {/* Card Header */}
-              <CardHeader className="flex items-center justify-between p-4 border-b">
+              <CardHeader className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center">
                   <div className="relative w-12 h-12 mr-4 rounded overflow-hidden">
                     <Image
@@ -118,7 +118,7 @@ export default async function MyJobPage() {
                     <CardTitle className="text-lg font-semibold">
                       {job.jobTitle}
                     </CardTitle>
-                    <CardDescription className="text-sm text-gray-500">
+                    <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
                       {job.Company?.name}
                     </CardDescription>
                   </div>
@@ -177,7 +177,7 @@ export default async function MyJobPage() {
               <CardContent className="flex flex-col justify-between p-4 flex-1">
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Status:
                     </span>
                     <span
@@ -186,19 +186,19 @@ export default async function MyJobPage() {
                           ? "text-green-500"
                           : status ===  "DRAFT" || status ==="PENDING"
                           ? "text-yellow-500" 
-                          : "text-green-500"
+                          : "text-red-500"
                       }`}
                     >
                       {statusFormatted}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {session.userType === "JOB_SEEKER"
                         ? "Applied On:"
                         : "Created On:"}
                     </span>
-                    <span className="text-sm text-gray-600">
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
                       {date.toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
@@ -208,10 +208,10 @@ export default async function MyJobPage() {
                   </div>
                   {session.userType === "Company" && (
                     <div className="flex justify-between">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         Candidates:
                       </span>
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
                         {job.AppliedJobPost.length}
                       </span>
                     </div>

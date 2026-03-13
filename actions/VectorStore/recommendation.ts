@@ -1,8 +1,9 @@
 import { prisma } from "@/utils/db";
-import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
+import { NomicEmbeddings } from "@langchain/nomic";
 
-const embedding = new GoogleGenerativeAIEmbeddings({
-  model: "text-embedding-004", // 768 dimensions
+const embedding = new NomicEmbeddings({
+  model: "nomic-embed-text-v1.5",
+  dimensionality: 768,
 });
 
 import { PineconeStore } from "@langchain/pinecone";
@@ -11,20 +12,15 @@ import { Pinecone as PineconeClient } from "@pinecone-database/pinecone";
 import { unstable_cache } from "next/cache";
 
 const pinecone = new PineconeClient();
-// Will automatically read the PINECONE_API_KEY and PINECONE_ENVIRONMENT env vars
 const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX!);
 
 export const vectorStore = await PineconeStore.fromExistingIndex(embedding, {
   pineconeIndex,
-
-  maxConcurrency: 5,
-  // You can pass a namespace here too
-  // namespace: "foo",
 });
 
 export async function getRecommendedJob(queryString: string) {
   const CachecdRelevancScorefun = unstable_cache(async () => {
-    const jobsByRelevanceScore = await vectorStore.similaritySearchWithScore(
+    const jobsByRelevanceScore = await vectorStore.similaritySearch(
       queryString,
       3
     );

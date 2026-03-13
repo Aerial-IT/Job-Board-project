@@ -52,7 +52,8 @@ export default async function Home({ searchParams }: SearchParams) {
   )};location=${location}`;
 
   const jobPosts=await GetAllJobPosts()
-  if(user.role && user.role.toLowerCase() === "company" ){
+  const userRole = user.role || user.userType;
+  if(userRole && userRole.toLowerCase() === "company" ){
     redirect("/my-jobs")
   }
 

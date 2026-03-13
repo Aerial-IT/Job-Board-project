@@ -83,15 +83,25 @@ export function MenuBar({ editor, setIsLoading }: MenuBarProps) {
       formvalues.location 
     ) {
       setIsLoading(() => true);
-      const generated_description = await generateJobDescription(
-        formvalues.jobTitle,
-        formvalues.location,
-        formvalues.employmentType,
-        formvalues.companyName
-      );
-      editor?.commands.clearContent();
-      editor?.commands.setContent(generated_description);
-      setIsLoading(() => false);
+      try {
+        const generated_description = await generateJobDescription(
+          formvalues.jobTitle,
+          formvalues.location,
+          formvalues.employmentType,
+          formvalues.companyName
+        );
+        if (generated_description && generated_description !== "Error Occured") {
+          editor?.commands.clearContent();
+          editor?.commands.setContent(generated_description);
+        } else {
+          alert("Failed to generate job description. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error generating job description:", error);
+        alert("Failed to generate job description. Please try again.");
+      } finally {
+        setIsLoading(() => false);
+      }
     }
 
     

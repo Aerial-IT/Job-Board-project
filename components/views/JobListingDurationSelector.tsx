@@ -6,7 +6,7 @@ import { jobListingDurationSelector } from "@/utils/jobListingDurationPricing";
 import { Label } from "../ui/label";
 import { Card } from "../ui/card";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Calendar, Check, Crown, Sparkles, Timer } from 'lucide-react';
 
 interface iAppProps {
@@ -25,7 +25,7 @@ export function JobListingDurationSelector({ field }: iAppProps) {
   };
 
   // Animation variants for smoother transitions
-  const expandAnimation = {
+  const expandAnimation: Variants = {
     initial: { 
       opacity: 0,
       height: 0,

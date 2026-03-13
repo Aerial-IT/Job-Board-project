@@ -88,7 +88,7 @@ export default function SearchBar({ jobPosts }: { jobPosts: JOBPOSTS }) {
             "border transition-all duration-200",
             isInputFocused
               ? "border-primary ring-2 ring-primary/20"
-              : "border-gray-200 hover:border-primary/50"
+              : "border-gray-200 dark:border-gray-700 hover:border-primary/50"
           )}
         >
           <div className="flex items-center flex-1 p-3">
@@ -99,13 +99,13 @@ export default function SearchBar({ jobPosts }: { jobPosts: JOBPOSTS }) {
               transition={{ duration: 1, repeat: isSearching ? Infinity : 0 }}
               className={cn(
                 "p-2 rounded-lg",
-                isInputFocused ? "bg-primary/10" : "bg-gray-100"
+                isInputFocused ? "bg-primary/10" : "bg-gray-100 dark:bg-gray-700"
               )}
             >
               {isSearching ? (
                 <Loader2 className="text-primary w-5 h-5" />
               ) : (
-                <SearchIcon className="text-gray-500 w-5 h-5" />
+                <SearchIcon className="text-gray-500 dark:text-gray-400 w-5 h-5" />
               )}
             </motion.div>
 
@@ -144,15 +144,15 @@ export default function SearchBar({ jobPosts }: { jobPosts: JOBPOSTS }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute w-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 overflow-hidden z-20"
+              className="absolute w-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden z-20"
             >
               {isSearching ? (
-                <div className="px-4 py-8 text-center text-gray-500">
+                <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                   <Loader2 className="w-6 h-6 mx-auto mb-2 animate-spin" />
                   <p>Searching...</p>
                 </div>
               ) : filteredData.length > 0 ? (
-                <div className="divide-y divide-gray-100">
+                <div className="divide-y divide-gray-100 dark:divide-gray-700">
                   {filteredData.slice(0, 5).map((job, idx) => {
                     const words = job.jobTitle.split(" ").map((word, id) => {
                       const isMatched = value
@@ -190,7 +190,7 @@ export default function SearchBar({ jobPosts }: { jobPosts: JOBPOSTS }) {
                           </div>
                           <div>
                             <div className="text-base">{words}</div>
-                            <div className="flex items-center gap-1 text-sm text-gray-500">
+                            <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
                               <MapPin className="w-3 h-3" />
                               {job.location}
                             </div>
@@ -208,7 +208,7 @@ export default function SearchBar({ jobPosts }: { jobPosts: JOBPOSTS }) {
                   })}
                 </div>
               ) : (
-                <div className="px-4 py-8 text-center text-gray-500">
+                <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                   No matching jobs found
                 </div>
               )}

@@ -22,9 +22,13 @@ export async function editJobSeeker(data: z.infer<typeof jobSeekerSchema>) {
 
   const validatedData = jobSeekerSchema.parse(data);
   console.log(validatedData);
-  const ats_keywords: string[] = await generateResumeKeywords(
-    validatedData.resume
-  );
+  let ats_keywords: string[] = [];
+  try {
+    ats_keywords = await generateResumeKeywords(validatedData.resume);
+  } catch (error) {
+    console.error("Failed to generate resume keywords:", error);
+    ats_keywords = [];
+  }
 
   await prisma.user.update({
     where: {
