@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { prisma } from "@/utils/db";
 import { requireUser } from "@/utils/requireUser";
-import { MoreHorizontalIcon, PenBoxIcon, Users2, XCircle } from "lucide-react";
+import { Book, MoreHorizontalIcon, PenBoxIcon, Users2, XCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import CopyLinks from "@/components/views/CopyLinks";
@@ -138,9 +138,12 @@ export default async function MyJobPage() {
                           <DropdownMenuItem asChild>
                             <Link href={`/my-jobs/${job.id}/candidates`}>
                               <Users2 className="mr-2 h-4 w-4" />
-                              View Candidates
+                              View Candidatesss
                             </Link>
                           </DropdownMenuItem>
+
+
+                                       
                           <DropdownMenuItem asChild>
                             <Link href={`/my-jobs/${job.id}/edit`}>
                               <PenBoxIcon className="mr-2 h-4 w-4" />
