@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Logo from "@/public/logo.png"
+import Logo from "@/public/logonew.png"
 import { useRouter } from "next/navigation"
 
 export function Header() {
