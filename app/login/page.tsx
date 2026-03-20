@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/logo.png";
 import { LoginForm } from "@/components/forms/LoginForm";
 
 export default function Login() {
@@ -20,14 +18,6 @@ export default function Login() {
           href="/" 
           className="flex items-center gap-3 justify-center group transition-transform duration-300 hover:scale-105 mb-6"
         >
-          <div className="relative size-12 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 group-hover:rotate-6">
-            <Image
-              src={Logo}
-              alt="Logo"
-              className="object-cover"
-              priority
-            />
-          </div>
           <h1 className="text-3xl font-bold tracking-tight">
             Job{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
